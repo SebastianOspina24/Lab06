@@ -20,19 +20,11 @@ jobs:
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
-          command:  mvn -f Servlet -B -DskipTests clean package 
+          command:  mvn -DskipTests clean package 
       # Then run your tests!
       - run:
           name: Test
-          command:  mvn -f Servlet test
-  deploy-hero:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - heroku/deploy-via-git:
-          app-name: laboratorio06cvds
-          api-key: HEROKU_API_KEY
+          command:  mvn  test
 
 workflows:
   # Below is the definition of your workflow.
@@ -42,4 +34,3 @@ workflows:
   sample: 
     jobs:
       - build-and-test
-      - deploy-hero
