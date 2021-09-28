@@ -25,15 +25,15 @@ jobs:
       - run:
           name: Test
           command:  mvn -f Servlet test
-  heroku_deploy:
-    jobs:
-      - build
+  deploy-hero:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
       - heroku/deploy-via-git:
-          requires:
-            - build # only run deploy-via-git job if the build job has completed
-          filters:
-            branches:
-              only: master # only run deploy-via-git job on master branch    
+          app-name: HEROKU_APP_NAME
+          api-key: HEROKU_API_KEY
+          branch: main 
 
 workflows:
   # Below is the definition of your workflow.
@@ -43,4 +43,4 @@ workflows:
   sample: 
     jobs:
       - build-and-test
-      - heroku_deploy 
+      - deploy-hero
