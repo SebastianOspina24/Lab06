@@ -33,7 +33,6 @@ jobs:
       - heroku/deploy-via-git:
           app-name: HEROKU_APP_NAME
           api-key: HEROKU_API_KEY
-          branch: main 
 
 workflows:
   # Below is the definition of your workflow.
