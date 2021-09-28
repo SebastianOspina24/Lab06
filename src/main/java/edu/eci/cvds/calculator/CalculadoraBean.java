@@ -66,7 +66,6 @@ public class CalculadoraBean {
         this.varianza = varianza;
     }
     public void setArreglo(String lista) {
-        lista = lista.strip();
         ArrayList<Double>arreglo = new ArrayList<>();
         String[]spli=lista.split(";");
         for(String x : spli){
