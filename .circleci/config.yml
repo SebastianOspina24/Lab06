@@ -31,7 +31,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - heroku/deploy-via-git:
-          app-name: HEROKU_APP_NAME
+          app-name: laboratorio06cvds
           api-key: HEROKU_API_KEY
 
 workflows:
