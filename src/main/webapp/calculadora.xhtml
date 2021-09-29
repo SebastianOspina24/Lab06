@@ -13,46 +13,75 @@
         }
     </script>
     <style>
-        .moda{
-            visibility:hidden;
+        .page{
+            padding: 10%;
+            background-color: rgb(93, 1, 179);
+            color: white;
+            font-family: sans-serif;
         }
-    
+        .formbox{
+            border-radius: 5px ;
+            background-color: rgba(1, 1, 70, 0.623);
+            padding: 20px 15px;
+            text-align: center;
+            align-items: center;
+            align-content: center;
+        }
+        .answers{
+            opacity: none;
+            font-size: 24px;
+        }
+        .botn{
+            width: 10%;
+            height: auto;
+            margin: 10px;
+            padding: auto;
+
+        }
+
+        .tabla{
+            align-self: center;
+            text-align: center;
+            align-items: center;
+            align-content: center;
+            
+        }
+
     </style>
     
 
-
-<h:body>
- <h:form id="calculadora_form" onsubmit="return validateForm()" >
-    <p:outputLabel class="moda" value="#{calculadoraBean.getModa()}" />
+<title>Calculadora</title>
+<h:body class="page">
+ <h:form id="calculadora_form" class="formbox" onsubmit="return validateForm()" >
+    <h1>Ingrese una lista de datos separados por ;</h1>
     <br></br>
     <p:inputText name="lista" value="#{calculadoraBean.lista}"/>
     <br></br>
-    <h1>Moda</h1>
-    <p:outputLabel value="#{calculadoraBean.moda}"/>
+    <h1>Moda:</h1>
+    <p:outputLabel class= "answers" value="#{calculadoraBean.moda}"/>
     <br></br>
-    <h1>media</h1>
-    <p:outputLabel value="#{calculadoraBean.media}"/>
+    <h1>Media:</h1>
+    <p:outputLabel class= "answers" value="#{calculadoraBean.media}"/>
     <br></br>
-    <h1>varianza</h1>
-    <p:outputLabel value="#{calculadoraBean.varianza}"/>
+    <h1>Varianza:</h1>
+    <p:outputLabel class= "answers" value="#{calculadoraBean.varianza}"/>
     <br></br>
-    <h1>desviacionEstandar</h1>
-    <p:outputLabel value="#{calculadoraBean.desviacionEstandar}"/>
+    <h1>Desviacion Estandar:</h1>
+    <p:outputLabel class= "answers" value="#{calculadoraBean.desviacionEstandar}"/>
     <br></br>
-    <p:commandButton value="Submint" update="calculadora_form" actionListener="#{calculadoraBean.calculateXXX}"></p:commandButton>
+    <p:commandButton class ="botn" value="Submint" update="calculadora_form" actionListener="#{calculadoraBean.calculateXXX}"></p:commandButton>
+    <p:commandButton class ="botn" value="reset" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"></p:commandButton>
     <br></br>
-    <p:commandButton value="reset" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"></p:commandButton>
- </h:form>
- <br></br>
- <h:dataTable value="#{calculadoraBean.ingresados}"
-                 var="datos"  style="width: 600px;"
-                 rendered="#{calculadoraBean.ingresados.size()>0}">
-             <h:column>
-                 <f:facet name = "header">
-                     <h:outputLabel value="Listas Ingresadas"/>
-                 </f:facet>
-                 <h:outputLabel value="#{datos}"/>
-             </h:column>
-             </h:dataTable>
+    <h:dataTable class="tabla" value="#{calculadoraBean.ingresados}"
+    var="datos"  style="width: 600px;"
+    rendered="#{calculadoraBean.ingresados.size()>0}">
+<h:column>
+    <f:facet class="tabla" name = "header">
+        <h:outputLabel value="Listas Ingresadas"/>
+    </f:facet>
+    <h:outputLabel value="#{datos}"/>
+</h:column>
+</h:dataTable> 
+</h:form>
 </h:body>
 </html>
