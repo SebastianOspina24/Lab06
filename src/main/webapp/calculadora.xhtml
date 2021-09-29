@@ -69,8 +69,8 @@
     <h1>Desviacion Estandar:</h1>
     <p:outputLabel class= "answers" value="#{calculadoraBean.desviacionEstandar}"/>
     <br></br>
-    <p:commandButton class ="botn" value="Submint" update="calculadora_form" actionListener="#{calculadoraBean.calculateXXX}"></p:commandButton>
-    <p:commandButton class ="botn" value="reset" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"></p:commandButton>
+    <p:commandButton class ="botn" value="SUBMIT" update="calculadora_form" actionListener="#{calculadoraBean.calculateXXX}"></p:commandButton>
+    <p:commandButton class ="botn" value="RESET" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"></p:commandButton>
     <br></br>
     <h:dataTable class="tabla" value="#{calculadoraBean.ingresados}"
     var="datos"  style="width: 600px;"
