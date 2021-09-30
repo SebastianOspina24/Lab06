@@ -3,7 +3,6 @@ package edu.eci.cvds.calculator;
 import java.util.ArrayList;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "calculadoraBean")
@@ -16,10 +15,6 @@ public class CalculadoraBean {
     private double moda;
     private double desviacionEstandar;
     private double varianza;
-
-    public CalculadoraBean(){
-        
-    }
 
     public String getLista() {
         return lista;
@@ -114,7 +109,7 @@ public class CalculadoraBean {
     }
 
     public void calculateXXX(){
-        setArreglo((lista=="")?"0":lista);
+        setArreglo((lista.equals(""))?"0":lista);
         ingresados.add(lista);
         moda = calculateMode(arreglo);
         media = calculateMean(arreglo);

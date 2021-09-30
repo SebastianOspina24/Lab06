@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.nio.charset.MalformedInputException;
 import java.util.Optional;
 
-
+import javax.faces.context.ExceptionHandler;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +29,7 @@ public class SuperServlet extends HttpServlet{
     Writer responseWriter = resp.getWriter();
     try{
         Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
-        if(optName.isPresent() && optName.get().isEmpty())throw new Exception("Is Empty");
+        if(optName.isPresent() && optName.get().isEmpty())throw new ServletException("Is Empty");
         int id = Integer.valueOf(optName.get());
         Todo info = Service.getTodo(id);
         List<Todo> todoList = new ArrayList<Todo>();
@@ -51,7 +51,7 @@ public class SuperServlet extends HttpServlet{
     Writer responseWriter = resp.getWriter();
     try{
         Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
-        if(optName.isPresent() && optName.get().isEmpty())throw new Exception("Is Empty");
+        if(optName.isPresent() && optName.get().isEmpty())throw new ServletException("Is Empty");
         int id = Integer.valueOf(optName.get());
         Todo info = Service.getTodo(id);
         List<Todo> todoList = new ArrayList<Todo>();
