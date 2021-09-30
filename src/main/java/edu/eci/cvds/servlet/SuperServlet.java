@@ -6,7 +6,6 @@ import java.io.Writer;
 import java.nio.charset.MalformedInputException;
 import java.util.Optional;
 
-import javax.faces.context.ExceptionHandler;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
