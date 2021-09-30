@@ -29,25 +29,19 @@ public class SuperServlet extends HttpServlet{
     Writer responseWriter = resp.getWriter();
     try{
         Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
-        if(optName.isPresent() && optName.get().isEmpty()){
-            throw new Exception();
-        };
+        if(optName.isPresent() && optName.get().isEmpty())throw new Exception("Is Empty");
         int id = Integer.valueOf(optName.get());
         Todo info = Service.getTodo(id);
         List<Todo> todoList = new ArrayList<Todo>();
         resp.setStatus(HttpServletResponse.SC_OK);
         todoList.add(info);
         responseWriter.write(Service.todosToHTMLTable(todoList));
+    }catch(FileNotFoundException e){
+        resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    }catch(MalformedInputException e){
+        resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
     }catch(Exception e){
-        if(e instanceof FileNotFoundException){
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        }
-        else if(e instanceof MalformedInputException){
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        }
-        else{
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        }
+        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
    }
 
@@ -57,29 +51,19 @@ public class SuperServlet extends HttpServlet{
     Writer responseWriter = resp.getWriter();
     try{
         Optional<String> optName = Optional.ofNullable(req.getParameter("id"));
-        if(optName.isPresent() && optName.get().isEmpty()){
-            throw new Exception();
-        };
+        if(optName.isPresent() && optName.get().isEmpty())throw new Exception("Is Empty");
         int id = Integer.valueOf(optName.get());
         Todo info = Service.getTodo(id);
         List<Todo> todoList = new ArrayList<Todo>();
         resp.setStatus(HttpServletResponse.SC_OK);
         todoList.add(info);
         responseWriter.write(Service.todosToHTMLTable(todoList));
+    }catch(FileNotFoundException e){
+        resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    }catch(MalformedInputException e){
+        resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
     }catch(Exception e){
-        if(e instanceof FileNotFoundException){
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        }
-        else if(e instanceof MalformedInputException){
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        }
-        else{
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        }
+        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
-   }
-
-
-
-
+    }
 }
